@@ -1,6 +1,6 @@
 #library(gitcreds)
 #gitcreds_set()
-#use_github(organisation = "rin3-spring-2021", private = TRUE)
+
 
 library(usethis)
 use_git()
