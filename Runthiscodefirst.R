@@ -2,8 +2,8 @@
 #gitcreds_set()
 
 
-library(usethis)
-use_git()
+#library(usethis)
+#use_git()
 
 #Initial code to run
 ## Solar radiation functions for Pines project - Jon Bennie 5th July 2013
