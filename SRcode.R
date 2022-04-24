@@ -2,7 +2,7 @@ library(raster)
 library(rgdal)
 
 ## set working directory (in this case where I saved your dem, change this for your file system)
-#setwd("//isad.isadroot.ex.ac.uk/UOE/User/Desktop/Robin code/smalltif")
+setwd("C:/Users/robcu/Documents/R/Rprojects/microclimate")
 
 ## load raster DEM - you only need the .tif file here
 dem <- raster("./tif/PredBMarch2018DEM.tif")
@@ -71,7 +71,7 @@ plot(rad)
 ### to export output as GIS compatible tif:
 
 writeRaster(rad,"output_rad.tif")
-writeRaster(rad,"./tif/SR_PredBMarch2018DEM.tif")
+writeRaster(rad,"C:/SR.tif")
 
 ### the output 'rad' is the total clear-sky radiation for the point in the landscape
 
