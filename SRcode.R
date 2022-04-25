@@ -51,7 +51,38 @@ longitude = -5
 
 ### the loop below calculates total clear-sky radiation for the period given slope and aspect
 
+##with progress bar
 
+pb <- txtProgressBar(min=0,max=endday-startday,style=3)
+
+rad <- 0
+
+for (d in startday:endday) {
+  
+  setTxtProgressBar(pb,(d-startday)+1)
+  
+  for (h in starthour:endhour) {
+    
+    alt <- solalt(time=h,day=d,lat=latitude)
+    
+    if(alt>0) {
+      
+      beam <- beamrad(day=d,altitude=alt,elevation=elev)
+      
+      diffuse <- diffuserad(day=d,altitude=alt)
+      
+      rad <- rad + swrad(sw=beam+diffuse,slope=slope,aspect=aspect,lat=latitude,lon=longitude,localtime=h,day=d,elevation=elev,merid=0,dst=0)
+      
+    }
+    
+  }
+  
+}
+
+close(pb)
+
+
+###without progress bar
 rad <- 0
 for (d in startday:endday) {
   for (h in starthour:endhour) {
@@ -70,8 +101,8 @@ plot(rad)
 
 ### to export output as GIS compatible tif:
 
-writeRaster(rad,"output_rad.tif")
-writeRaster(rad,"C:/SR.tif")
+writeRaster(rad,"SR_PredBMarch2018.tif")
+#writeRaster(rad,"C:/SR.tif")
 
 ### the output 'rad' is the total clear-sky radiation for the point in the landscape
 
